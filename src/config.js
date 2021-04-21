@@ -1,7 +1,7 @@
 
 const database = {
-    username: "giovanni",
-    password: "giovanni",
+    username: "guevara",
+    password: "guevara",
     database: "sequelize",
     host: "localhost"
 };
