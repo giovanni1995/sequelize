@@ -1,4 +1,4 @@
-const {crear,listar,listarIdDirecciones,listarIdPublicaciones} = require("../models/users/userConsulta");
+const {crear,listar,listarIdDirecciones,listarIdPublicaciones,listarIdBandas} = require("../models/users/userConsulta");
 //const User = require ("../models/users/User");
 //const sequalize = require("../models/db");
 
@@ -26,6 +26,12 @@ const {crear,listar,listarIdDirecciones,listarIdPublicaciones} = require("../mod
     res.json(user);
     
   };
+
+  const listarIdCBandas =  async (req, res) => {
+    const user = await listarIdBandas(req, res);
+    res.json(user);
+    
+  };
   
 
   const defecto =  (req, res) => {
@@ -37,5 +43,5 @@ const {crear,listar,listarIdDirecciones,listarIdPublicaciones} = require("../mod
 
 
   module.exports ={
-    crearC,defecto,listarC,listarIdCDirecciones,listarIdCPublicaciones
+    crearC,defecto,listarC,listarIdCDirecciones,listarIdCPublicaciones,listarIdCBandas
 }

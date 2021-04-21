@@ -1,6 +1,7 @@
 //const sequalize = require ("../db");
 const User = require ("./User");
 const Post = require ("./Post");
+const Band = require ("./Band");
 const Direcciones = require ("./Direcciones");
 
 /*let a = ""; 
@@ -75,6 +76,22 @@ const listarIdPublicaciones = async (req, res) => {
      } 
 };
 
+const listarIdBandas = async (req, res) => {
+    try {      
+        const users = await User.findByPk(req.params.id);    
+        const bandas = await users.getBands({
+            attributes:["name","type"]
+        }); // dependiendo de la asosiacion que hagamos en relation.js
+        console.log(users.getBands());
+        return bandas;
+     } catch (error) {
+         //console.log(error);
+         res.json({
+            "Notificacion":"Error al crear "+error
+          });
+     } 
+};
+
 
 
 
@@ -108,5 +125,5 @@ const listarIdPublicaciones = async (req, res) => {
   };
 
 module.exports={
-    crear,listar,listarIdDirecciones,listarIdPublicaciones
+    crear,listar,listarIdDirecciones,listarIdPublicaciones,listarIdBandas
 }
